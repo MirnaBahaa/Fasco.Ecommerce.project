@@ -1,0 +1,1027 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>FASCO</title>
+  <style>
+    :root {
+      --main-color: #000;
+      --hover-color: #1a73e8;
+      --text-color: #333;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      line-height: 1.6;
+      background-color: #fff;
+    }
+
+    /* Navbar */
+    .navbar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 20px 100px;
+      background-color: #fff;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+      position: sticky;
+      top: 0;
+      z-index: 999;
+      flex-wrap: wrap;
+    }
+
+    .logo {
+      font-size: 24px;
+      font-weight: bold;
+      color: var(--text-color);
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 30px;
+      justify-content: center;
+      flex-grow: 1;
+      flex-wrap: wrap;
+    }
+
+    .nav-links a {
+      text-decoration: none;
+      color: var(--text-color);
+      font-size: 14px;
+      transition: color 0.3s, font-weight 0.3s;
+    }
+
+    .nav-links a:hover {
+      color: var(--hover-color);
+      font-weight: bold;
+      text-decoration: underline;
+    }
+
+    .signup-btn {
+      background-color: var(--main-color);
+      color: #fff;
+      padding: 10px 20px;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      font-size: 14px;
+      box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+      transition: background-color 0.3s, transform 0.2s;
+    }
+
+    .signup-btn:hover {
+      background-color: #222;
+      transform: scale(1.05);
+    }
+    </style>
+
+    <style>
+    
+    * {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+  font-family: sans-serif;
+}
+
+body {
+  background: #fff;
+  padding: 0 100px; 
+}
+
+
+.shop-container {
+  display: flex;
+  gap: 30px;
+  flex-wrap: wrap;
+  margin-top: 70px; 
+}
+
+
+/* Filters Sidebar */
+.filters {
+  flex: 1;
+  min-width: 220px;
+}
+
+.filter-group {
+  margin-bottom: 20px;
+}
+
+.filter-group h3 {
+  margin-bottom: 10px;
+  font-size: 16px;
+}
+
+.sizes button {
+  margin: 5px 5px 0 0;
+  padding: 6px 10px;
+  border: 1px solid #ccc;
+  background: #fff;
+  cursor: pointer;
+  border-radius: 4px;
+}
+
+.sizes button:hover {
+  background: #f5f5f5;
+}
+
+.colors span {
+  display: inline-block;
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  margin: 5px 5px 0 0;
+  border: 1px solid #ccc;
+  cursor: pointer;
+}
+
+.price-list li {
+  list-style: none;
+  margin-bottom: 6px;
+  cursor: pointer;
+}
+
+/* Products */
+.products {
+  flex: 3;
+  min-width: 400px;
+}
+
+.product-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+  gap: 20px;
+}
+
+.product-card {
+  border: 1px solid #eee;
+  border-radius: 8px;
+  padding: 10px;
+  text-align: center;
+  background: #fff;
+  transition: box-shadow 0.2s ease;
+}
+
+.product-card:hover {
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.product-card img {
+  max-width: 100%;
+  height: auto;
+  margin-bottom: 10px;
+}
+
+.product-card h4 {
+  font-size: 15px;
+  margin-bottom: 5px;
+}
+
+.product-card .price {
+  font-weight: bold;
+  color: #333;
+  margin-bottom: 8px;
+}
+
+.product-card .colors span {
+  margin: 0 3px;
+}
+
+/* Pagination */
+.pagination {
+  margin-top: 20px;
+  text-align: center;
+}
+
+.pagination button {
+  margin: 0 5px;
+  padding: 6px 10px;
+  border: 1px solid #ccc;
+  background: #fff;
+  cursor: pointer;
+  border-radius: 10px;
+}
+
+.pagination .active {
+  background: #000;
+  color: #fff;
+  border-color: #000;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .shop-container {
+    flex-direction: column;
+  }
+
+  .filters, .products {
+    width: 100%;
+  }
+
+  .product-grid {
+    grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+  }
+}
+ </style>
+
+ <Style>
+    /* سكشن العرض الكامل */
+.highlighted-product {
+  width: 100vw;
+  position: relative;
+  left: 50%;
+  right: 50%;
+  margin-left: -50vw;
+  margin-right: -50vw;
+  display: flex;
+  flex-wrap: wrap;
+  background-color: #eaeaea;
+  padding: 0px 0;
+  margin-top: 70px;
+  box-sizing: border-box;
+}
+
+/* العمود الأيسر - الصورة والـ labels */
+.product-left {
+  position: relative;
+  flex: 1;
+  min-width: 500px;
+  text-align: center;
+}
+
+.product-left img {
+  width: 100%;
+  max-width: 1000px;
+  object-fit: cover;
+}
+
+/* الـ labels */
+.label {
+  position: absolute;
+  background-color: #fff;
+  border: 1px solid #aaa;
+  padding: 4px 10px;
+  font-size: 13px;
+  font-weight: 500;
+  white-space: nowrap;
+}
+
+/* أماكن مخصصة للـ labels */
+.label-cap {
+  top: 30px;
+  right: 100px;
+}
+
+.label-suspender {
+  top: 100px;
+  left: 30px;
+}
+
+.label-hugo1 {
+  top: 160px;
+  left: 70px;
+}
+
+.label-hugo2 {
+  top: 210px;
+  left: 30px;
+}
+
+.label-santoni {
+  bottom: 60px;
+  left: 160px;
+}
+
+/* العمود الأيمن - الوصف والتفاصيل */
+.product-right {
+  flex: 1;
+  padding: 40px 60px;
+  background-color: #eaeaea;
+  position: relative;
+  min-width: 300px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.product-right small {
+  font-size: 13px;
+  color: #666;
+}
+
+.product-right h2 {
+  font-size: 32px;
+  margin: 10px 0;
+  color: #222;
+}
+
+.desc-link {
+  font-size: 14px;
+  font-weight: bold;
+  text-decoration: underline;
+  color: #000;
+  display: inline-block;
+  margin-bottom: 20px;
+}
+
+.product-right p {
+  font-size: 14px;
+  color: #555;
+  line-height: 1.6;
+}
+
+.product-details {
+  margin-top: 25px;
+}
+
+.size-btn {
+  background-color: #000;
+  color: #fff;
+  padding: 5px 12px;
+  border-radius: 20px;
+  font-size: 13px;
+  margin-left: 10px;
+}
+
+.price {
+  font-size: 22px;
+  font-weight: bold;
+  margin: 15px 0;
+}
+
+.buy-button {
+  background-color: #000;
+  color: #fff;
+  padding: 12px 30px;
+  font-size: 15px;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.buy-button:hover {
+  background-color: #333;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .highlighted-product {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+
+  .product-right {
+    padding: 30px 20px;
+  }
+
+  .label {
+    font-size: 11px;
+  }
+}
+
+ </Style>
+ <style>
+    .instagram-section {
+  background-color: #fff;
+  padding: 70px 20px;
+  text-align: center;
+}
+
+.instagram-text h2 {
+  font-size: 28px;
+  color: #222;
+  margin-bottom: 10px;
+}
+
+.instagram-text p {
+  color: #666;
+  font-size: 14px;
+  max-width: 600px;
+  margin: auto;
+  line-height: 1.6;
+}
+
+.instagram-gallery {
+  margin-top: 40px;
+  display: flex;
+  gap: 20px;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.instagram-gallery img {
+  width: 130px;
+  height: 180px;
+  object-fit: cover;
+  border-radius: 8px;
+  transition: transform 0.3s ease, box-shadow 0.3s;
+}
+
+.instagram-gallery img:hover {
+  transform: scale(1.05);
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.15);
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .instagram-gallery img {
+    width: 100px;
+    height: 150px;
+  }
+
+  .instagram-text h2 {
+    font-size: 22px;
+  }
+}
+  </style>
+
+  <Style>
+    .testimonials-section {
+  background-color: #f9f9f9;
+  padding: 80px 20px;
+  text-align: center;
+}
+
+.testimonials-header h2 {
+  font-size: 28px;
+  color: #222;
+  margin-bottom: 10px;
+}
+
+.testimonials-header p {
+  color: #666;
+  font-size: 14px;
+  margin-bottom: 40px;
+}
+
+.testimonial-slider {
+  display: flex;
+  justify-content: center;
+  gap: 30px;
+  flex-wrap: nowrap;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  padding: 0 20px;
+}
+
+.testimonial-card {
+  background-color: #fff;
+  padding: 30px 20px;
+  border-radius: 15px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.05);
+  min-width: 300px;
+  max-width: 350px;
+  scroll-snap-align: center;
+  transition: transform 0.3s ease;
+}
+
+.testimonial-card img {
+  width: 150px;
+  height: 150px;
+  border-radius: 10px;
+  object-fit: cover;
+  margin-bottom: 15px;
+}
+
+.testimonial-content p {
+  font-size: 14px;
+  color: #444;
+  margin-bottom: 10px;
+}
+
+.stars {
+  color: #f5a623;
+  font-size: 16px;
+  margin-bottom: 10px;
+}
+
+.testimonial-content h3 {
+  margin: 5px 0;
+  font-size: 16px;
+  color: #000;
+}
+
+.testimonial-content span {
+  font-size: 13px;
+  color: #777;
+}
+
+.testimonial-nav {
+  margin-top: 30px;
+}
+
+.nav-btn {
+  background: #fff;
+  border: none;
+  border-radius: 50%;
+  width: 50px;
+  height: 50px;
+  font-size: 16px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+  margin: 0 5px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.nav-btn:hover {
+  background-color: #eee;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .testimonial-slider {
+    flex-wrap: nowrap;
+    overflow-x: scroll;
+  }
+
+  .testimonial-card {
+    min-width: 260px;
+  }
+}
+  </Style>
+<style>
+  /* Basic Reset */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Segoe UI', sans-serif;
+  background: #fff;
+  color: #333;
+}
+
+/* Newsletter Section */
+.newsletter {
+  padding: 60px 20px;
+  background: #ffffff;
+  text-align: center;
+}
+
+.container {
+  max-width: 1200px;
+  margin: auto;
+}
+
+.newsletter-content {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 30px;
+}
+
+.image-container img {
+  width: 100%;
+  max-width: 250px;
+  transition: transform 0.3s ease;
+}
+
+.image-container img:hover {
+  transform: scale(1.05);
+}
+
+.form-container {
+  flex: 1;
+  min-width: 300px;
+  max-width: 500px;
+  text-align: center;
+}
+
+.form-container h2 {
+  font-size: 28px;
+  margin-bottom: 15px;
+  color: #333;
+}
+
+.form-container p {
+  font-size: 14px;
+  color: #777;
+  margin-bottom: 25px;
+}
+
+.subscribe-form {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  align-items: center;
+}
+
+.subscribe-form input[type="email"] {
+  padding: 12px 20px;
+  width: 100%;
+  max-width: 350px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  transition: border-color 0.3s;
+}
+
+.subscribe-form input[type="email"]:focus {
+  border-color: #000;
+  outline: none;
+}
+
+.subscribe-form button {
+  padding: 12px 25px;
+  background: #000;
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background 0.3s, transform 0.3s;
+}
+
+.subscribe-form button:hover {
+  background: #333;
+  transform: translateY(-2px);
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .newsletter-content {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .image-container img {
+    max-width: 180px;
+  }
+
+  .form-container h2 {
+    font-size: 24px;
+  }
+}
+</style>
+
+<style>
+  /* Footer Styles */
+.footer {
+  background: #f6f6f6;
+  padding: 40px 20px 20px;
+  border-top: 1px solid #eee;
+  text-align: center;
+}
+
+.footer .container {
+  max-width: 1200px;
+  margin: auto;
+}
+
+.footer-content {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+  gap: 20px;
+}
+
+.footer-logo {
+  font-size: 20px;
+  font-weight: bold;
+  color: #222;
+}
+
+.footer-links {
+  list-style: none;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  justify-content: center;
+  margin: 0;
+  padding: 0;
+}
+
+.footer-links li a {
+  text-decoration: none;
+  color: #444;
+  font-size: 14px;
+  transition: color 0.3s ease;
+}
+
+.footer-links li a:hover {
+  color: #000;
+}
+
+.footer p {
+  font-size: 13px;
+  color: #777;
+}
+
+/* Responsive Footer */
+@media (max-width: 768px) {
+  .footer-content {
+    flex-direction: column;
+    text-align: center;
+  }
+}
+
+</style>
+
+
+</head>
+<body>
+<!-- Navbar -->
+  <nav class="navbar">
+    <div class="logo">FASCO</div>
+    <div class="nav-links">
+      <a href="Home.html">Home</a>
+      <a href="shop.html">Shop</a>
+      <a href="#">New Arrivals</a>
+      <a href="#">Packages</a>
+      <a href="#">Sign in</a>
+    </div>
+    <button class="signup-btn">Sign Up</button>
+  </nav>
+
+
+  <section class="shop-container">
+    <!-- Sidebar Filters -->
+    <aside class="filters">
+      <h2>Filters</h2>
+
+      <div class="filter-group">
+        <h3>Size</h3>
+        <div class="sizes">
+          <button>S</button>
+          <button>M</button>
+          <button>L</button>
+          <button>XL</button>
+        </div>
+      </div>
+
+      <div class="filter-group">
+        <h3>Colors</h3>
+        <div class="colors">
+          <span style="background-color:#000"></span>
+          <span style="background-color:#f00"></span>
+          <span style="background-color:#0f0"></span>
+          <span style="background-color:#00f"></span>
+          <span style="background-color:#ff0"></span>
+          <span style="background-color:#0ff"></span>
+          <span style="background-color:#f0f"></span>
+          <span style="background-color:#ccc"></span>
+        </div>
+      </div>
+
+      <div class="filter-group">
+        <h3>Prices</h3>
+        <ul class="price-list">
+          <li>$0 - $50</li>
+          <li>$50 - $100</li>
+          <li>$100 - $150</li>
+          <li>$150 - $200</li>
+          <li>$200 - $400</li>
+        </ul>
+      </div>
+    </aside>
+
+    <!-- Product Grid -->
+    <main class="products">
+      <h2>Best Selling</h2>
+      <div class="product-grid">
+        <!-- Product Card Example -->
+        <div class="product-card" >
+            <a href="Prodact.html"><img src="New folder/49_ecfb9d65-a392-40b1-b9fb-f62e5a84f812.jpg.png" alt="Product 1" /></a>
+          <h4>Rounded Red Hat</h4>
+          <p class="price">$0.00</p>
+          <div class="colors">
+            <span style="background-color: #000;"></span>
+            <span style="background-color: #ff0;"></span>
+          </div>
+        </div>
+
+        <div class="product-card">
+          <img src="New folder/Link ⏵ responsive-image-1.png" alt="Product 2" />
+          <h4>Loose-hood Shirt</h4>
+          <p class="price">$77.00</p>
+          <div class="colors">
+            <span style="background-color: #2f158e;"></span>
+            <span style="background-color: #ca0909;"></span>
+          </div>
+        </div>
+
+        <div class="product-card">
+          <img src="New folder/Link ⏵ responsive-image-2.png" alt="Product 2" />
+          <h4>Loose-hood Shirt</h4>
+          <p class="price">$77.00</p>
+          <div class="colors">
+            <span style="background-color: #811149;"></span>
+            <span style="background-color: #73c219;"></span>
+          </div>
+        </div>
+
+        <div class="product-card">
+          <img src="New folder/Link ⏵ responsive-image-3.png" alt="Product 2" />
+          <h4>Loose-hood Shirt</h4>
+          <p class="price">$77.00</p>
+          <div class="colors">
+            <span style="background-color: #b3d215;"></span>
+            <span style="background-color: #be1243;"></span>
+          </div>
+        </div>
+
+        <div class="product-card">
+          <img src="New folder/Link ⏵ responsive-image-4.png" alt="Product 2" />
+          <h4>Loose-hood Shirt</h4>
+          <p class="price">$77.00</p>
+          <div class="colors">
+            <span style="background-color: #8ad80c;"></span>
+            <span style="background-color: #ccc;"></span>
+          </div>
+        </div>
+
+        <div class="product-card">
+          <img src="New folder/Link ⏵ responsive-image-5.png" alt="Product 2" />
+          <h4>Loose-hood Shirt</h4>
+          <p class="price">$77.00</p>
+          <div class="colors">
+            <span style="background-color: #117ecb;"></span>
+            <span style="background-color: #9a0a0a;"></span>
+          </div>
+        </div>
+
+        <div class="product-card">
+          <img src="New folder/Link ⏵ responsive-image-6.png" alt="Product 2" />
+          <h4>Loose-hood Shirt</h4>
+          <p class="price">$77.00</p>
+          <div class="colors">
+            <span style="background-color: #291381;"></span>
+            <span style="background-color: #14980a;"></span>
+          </div>
+        </div>
+
+        <div class="product-card">
+          <img src="New folder/Link ⏵ responsive-image-7.png" alt="Product 2" />
+          <h4>Loose-hood Shirt</h4>
+          <p class="price">$77.00</p>
+          <div class="colors">
+            <span style="background-color: #611616;"></span>
+            <span style="background-color: #e5dbdb;"></span>
+          </div>
+        </div>
+
+        <div class="product-card">
+          <img src="New folder/Link ⏵ responsive-image.png" alt="Product 2" />
+          <h4>Loose-hood Shirt</h4>
+          <p class="price">$77.00</p>
+          <div class="colors">
+            <span style="background-color: #e5e5e5;"></span>
+            <span style="background-color: #352b2b;"></span>
+          </div>  
+        </div>
+
+        <!-- ... المزيد من الكروت بنفس البنية -->
+      </div>
+
+      <!-- Pagination -->
+      <div class="pagination">
+        <button>&lt;</button>
+        <button class="active">1</button>
+        <button>2</button>
+        <button>3</button>
+        <button>&gt;</button>
+      </div>
+    </main>
+  </section>
+
+  <section class="highlighted-product">
+  <div class="product-left">
+    <img src="Model Collection.png" alt="Model with Outfit">
+  </div>
+
+  <div class="product-right">
+    <small>Women Collection</small>
+    <h2>Peaky Blinders</h2>
+    <a href="#" class="desc-link">DESCRIPTION</a>
+    <p>
+      Lorem ipsum dolor sit amet, consectetur adipiscing elit. Scelerisque duis ultrices
+      sollicitudin aliquam sem. Scelerisque duis ultrices sollicitudin. Lorem ipsum dolor sit
+      amet, consectetur adipiscing elit. Scelerisque duis.
+    </p>
+
+    <div class="product-details">
+      <p><strong>Size:</strong> <span class="size-btn">M</span></p>
+      <p class="price">$100.00</p>
+      <button class="buy-button">Buy Now</button>
+    </div>
+  </div>
+</section>
+
+
+  <section class="instagram-section">
+  <div class="instagram-text">
+    <h2>Follow Us On Instagram</h2>
+    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Scelerisque duis ultrices sollicitudin aliquam sem. Scelerisque duis ultrices sollicitudin</p>
+  </div>
+  <div class="instagram-gallery">
+    <img src="follow 1.png" alt="Look 1">
+    <img src="follow 2.png" alt="Look 2">
+    <img src="follow 3.png" alt="Look 3">
+    <img src="follow 4.png" alt="Look 4">
+    <img src="follow 5.png" alt="Look 5">
+    <img src="follow 6.png" alt="Look 6">
+    <img src="follow 7.png" alt="Look 7">
+  </div>
+</section>
+<section class="testimonials-section">
+  <div class="testimonials-header">
+    <h2>This Is What Our Customers Say</h2>
+    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Scelerisque duis</p>
+  </div>
+
+  <div class="testimonial-slider">
+    <div class="testimonial-card active">
+      <img src="Rv1.png" alt="Customer 1">
+      <div class="testimonial-content">
+        <p>"You won't regret it. I would like to personally thank you for your outstanding product. Absolutely wonderful!"</p>
+        <div class="stars">★★★★★</div>
+        <h3>James K.</h3>
+        <span>Traveler</span>
+      </div>
+    </div>
+
+    <div class="testimonial-card">
+      <img src="Rv2.png" alt="Customer 2">
+      <div class="testimonial-content">
+        <p>"Great quality, easy to use and great value. I will definitely be ordering again!"</p>
+        <div class="stars">★★★★★</div>
+        <h3>Susan W.</h3>
+        <span>Designer</span>
+      </div>
+    </div>
+
+    <div class="testimonial-card">
+      <img src="Rv3.png" alt="Customer 3">
+      <div class="testimonial-content">
+        <p>"The support team was amazing and helped me set everything up fast!"</p>
+        <div class="stars">★★★★★</div>
+        <h3>David R.</h3>
+        <span>Photographer</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="testimonial-nav">
+    <button class="nav-btn prev">←</button>
+    <button class="nav-btn next">→</button>
+  </div>
+</section>
+<!-- Newsletter Section -->
+<section class="newsletter">
+  <div class="container">
+    <div class="newsletter-content">
+      <div class="image-container">
+        <img src="Footer 1.png" alt="Left Model">
+      </div>
+      <div class="form-container">
+        <h2>Subscribe To Our Newsletter</h2>
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Scelerisque duis ultrices sollicitudin aliquam sem.</p>
+        <form class="subscribe-form">
+          <input type="email" placeholder="Mirna@gmail.com" required>
+          <button type="submit">Subscribe Now</button>
+        </form>
+      </div>
+      <div class="image-container">
+        <img src="Footer 2.png" alt="Right Model">
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Footer -->
+<footer class="footer">
+  <div class="container">
+    <div class="footer-content">
+      <div class="footer-logo">FASCO</div>
+      <ul class="footer-links">
+        <li><a href="#">Support Center</a></li>
+        <li><a href="#">Invoicing</a></li>
+        <li><a href="#">Contract</a></li>
+        <li><a href="#">Careers</a></li>
+        <li><a href="#">Blog</a></li>
+        <li><a href="#">FAQs</a></li>
+      </ul>
+    </div>
+    <p class="copyright">Copyright © 2025 Mirna Bahaa. All Rights Reserved.</p>
+  </div>
+</footer>
+
+
+
+
+  
+</body>
+</html>

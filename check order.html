@@ -1,0 +1,573 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>FASCO</title>
+  <style>
+    :root {
+      --main-color: #000;
+      --hover-color: #1a73e8;
+      --text-color: #333;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      line-height: 1.6;
+      background-color: #fff;
+    }
+
+    /* Navbar */
+    .navbar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 20px 100px;
+      background-color: #fff;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+      position: sticky;
+      top: 0;
+      z-index: 999;
+      flex-wrap: wrap;
+    }
+
+    .logo {
+      font-size: 24px;
+      font-weight: bold;
+      color: var(--text-color);
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 30px;
+      justify-content: center;
+      flex-grow: 1;
+      flex-wrap: wrap;
+    }
+
+    .nav-links a {
+      text-decoration: none;
+      color: var(--text-color);
+      font-size: 14px;
+      transition: color 0.3s, font-weight 0.3s;
+    }
+
+    .nav-links a:hover {
+      color: var(--hover-color);
+      font-weight: bold;
+      text-decoration: underline;
+    }
+
+    .signup-btn {
+      background-color: var(--main-color);
+      color: #fff;
+      padding: 10px 20px;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      font-size: 14px;
+      box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+      transition: background-color 0.3s, transform 0.2s;
+    }
+
+    .signup-btn:hover {
+      background-color: #222;
+      transform: scale(1.05);
+    }
+    </style>
+
+
+
+<style>
+    /* Reset some default browser styles */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: Arial, sans-serif;
+  background-color: #efefef;
+  color: #333;
+}
+
+.checkout-section {
+  padding: 50px 10%;
+  text-align: center;
+}
+
+h1 {
+  font-size: 32px;
+  margin-bottom: 20px;
+}
+
+.checkout-container {
+  display: flex;
+  justify-content: space-between;
+  gap: 40px;
+  flex-wrap: wrap;
+}
+
+.checkout-form {
+  width: 60%;
+}
+
+h2 {
+  font-size: 24px;
+  margin-bottom: 10px;
+}
+
+.input-group {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 15px;
+}
+
+input[type="text"], input[type="email"], select {
+  width: 100%;
+  padding: 12px;
+  margin: 10px 0;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+}
+
+button {
+  width: 100%;
+  padding: 12px;
+  background-color: #000;
+  color: #fff;
+  font-size: 16px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+button:hover {
+  background-color: #333;
+}
+
+label {
+  font-size: 14px;
+  margin-top: 10px;
+}
+
+/* Order Summary */
+.order-summary {
+  width: 35%;
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.order-summary-header {
+  display: flex;
+  gap: 20px;
+}
+
+.order-summary-header img {
+  width: 100px;
+  height: 100px;
+  object-fit: cover;
+  border-radius: 8px;
+}
+
+.summary-text {
+  text-align: left;
+}
+
+.order-details p {
+  font-size: 18px;
+  margin-bottom: 10px;
+}
+
+.discount-code {
+  display: flex;
+  gap: 10px;
+}
+
+.discount-code input {
+  width: 80%;
+}
+
+.apply-btn {
+  padding: 12px;
+  background-color: #000000;
+  border: none;
+  border-radius: 4px;
+  color: #fff;
+  cursor: pointer;
+}
+
+.apply-btn:hover {
+  background-color: #e66d00;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .checkout-container {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .checkout-form {
+    width: 100%;
+  }
+
+  .order-summary {
+    width: 100%;
+    margin-top: 20px;
+  }
+
+  .checkout-container {
+    gap: 20px;
+  }
+}
+
+</style>
+
+<style>
+  /* Basic Reset */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Segoe UI', sans-serif;
+  background: #fff;
+  color: #333;
+}
+
+/* Newsletter Section */
+.newsletter {
+  padding: 60px 20px;
+  background: #ffffff;
+  text-align: center;
+}
+
+.container {
+  max-width: 1200px;
+  margin: auto;
+}
+
+.newsletter-content {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 30px;
+}
+
+.image-container img {
+  width: 100%;
+  max-width: 250px;
+  transition: transform 0.3s ease;
+}
+
+.image-container img:hover {
+  transform: scale(1.05);
+}
+
+.form-container {
+  flex: 1;
+  min-width: 300px;
+  max-width: 500px;
+  text-align: center;
+}
+
+.form-container h2 {
+  font-size: 28px;
+  margin-bottom: 15px;
+  color: #333;
+}
+
+.form-container p {
+  font-size: 14px;
+  color: #777;
+  margin-bottom: 25px;
+}
+
+.subscribe-form {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  align-items: center;
+}
+
+.subscribe-form input[type="email"] {
+  padding: 12px 20px;
+  width: 100%;
+  max-width: 350px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  transition: border-color 0.3s;
+}
+
+.subscribe-form input[type="email"]:focus {
+  border-color: #000;
+  outline: none;
+}
+
+.subscribe-form button {
+  padding: 12px 25px;
+  background: #000;
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background 0.3s, transform 0.3s;
+}
+
+.subscribe-form button:hover {
+  background: #333;
+  transform: translateY(-2px);
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .newsletter-content {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .image-container img {
+    max-width: 180px;
+  }
+
+  .form-container h2 {
+    font-size: 24px;
+  }
+}
+</style>
+
+<style>
+  /* Footer Styles */
+.footer {
+  background: #f6f6f6;
+  padding: 40px 20px 20px;
+  border-top: 1px solid #eee;
+  text-align: center;
+}
+
+.footer .container {
+  max-width: 1200px;
+  margin: auto;
+}
+
+.footer-content {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+  gap: 20px;
+}
+
+.footer-logo {
+  font-size: 20px;
+  font-weight: bold;
+  color: #222;
+}
+
+.footer-links {
+  list-style: none;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  justify-content: center;
+  margin: 0;
+  padding: 0;
+}
+
+.footer-links li a {
+  text-decoration: none;
+  color: #444;
+  font-size: 14px;
+  transition: color 0.3s ease;
+}
+
+.footer-links li a:hover {
+  color: #000;
+}
+
+.footer p {
+  font-size: 13px;
+  color: #777;
+}
+
+/* Responsive Footer */
+@media (max-width: 768px) {
+  .footer-content {
+    flex-direction: column;
+    text-align: center;
+  }
+}
+
+</style>
+
+
+
+
+
+
+
+</head>
+<body>
+
+     <!-- Navbar -->
+  <nav class="navbar">
+    <div class="logo">FASCO</div>
+    <div class="nav-links">
+      <a href="Home.html">Home</a>
+      <a href="shop.html">Shop</a>
+      <a href="#">New Arrivals</a>
+      <a href="#">Packages</a>
+      <a href="#">Sign in</a>
+    </div>
+    <a href="#"><button class="signup-btn">Sign Up</button></a>
+  </nav>
+
+
+
+
+
+  <section class="checkout-section">
+  <!-- Header -->
+  <h1>FASCO Checkout</h1>
+
+  <div class="checkout-container">
+    <!-- Left side: Form Inputs -->
+    <div class="checkout-form">
+      <!-- Contact Section -->
+      <div class="contact-section">
+        <h2>Contact</h2>
+        <p><a href="#">Have an account? Create Account</a></p>
+        <input type="email" placeholder="Email Address" required>
+      </div>
+      
+      <!-- Delivery Section -->
+      <div class="delivery-section">
+        <h2>Delivery</h2>
+        <div class="input-group">
+          <input type="text" placeholder="Country / Region" required>
+          <input type="text" placeholder="First Name" required>
+          <input type="text" placeholder="Last Name" required>
+        </div>
+        <input type="text" placeholder="Address" required>
+        <div class="input-group">
+          <input type="text" placeholder="City" required>
+          <input type="text" placeholder="Postal Code" required>
+        </div>
+        <label>
+          <input type="checkbox"> Save This Info For Future
+        </label>
+      </div>
+
+      <!-- Payment Section -->
+      <div class="payment-section">
+        <h2>Payment</h2>
+        <select>
+          <option selected>Credit Card</option>
+          <option>PayPal</option>
+          <option>Apple Pay</option>
+        </select>
+        <div class="input-group">
+          <input type="text" placeholder="Card Number" required>
+          <input type="text" placeholder="Expiration Date" required>
+          <input type="text" placeholder="Security Code" required>
+        </div>
+        <input type="text" placeholder="Card Holder Name" required>
+        <label>
+          <input type="checkbox"> Save This Info For Future
+        </label>
+        <button class="pay-now">Pay Now</button>
+      </div>
+    </div>
+
+    <!-- Right side: Order Summary -->
+    <div class="order-summary">
+      <div class="order-summary-header">
+        <img src="New folder/49_ecfb9d65-a392-40b1-b9fb-f62e5a84f812.jpg.png" alt="Product Image">
+        <div class="summary-text">
+          <h3>Mini Dress With Ruffled Straps</h3>
+          <p>Red</p>
+          <p>$100.00</p>
+          <a href="#"><div class="discount-code"></a>
+            <input type="text" placeholder="Discount code">
+            <a href="#"><button class="apply-btn">Apply</button></a>
+          </div>
+        </div>
+      </div>
+      
+      <div class="order-details">
+        <p>Subtotal: $100.00</p>
+        <p>Shipping: $40.00</p>
+        <p>Total: $140.00</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+
+<!-- Newsletter Section -->
+<section class="newsletter">
+  <div class="container">
+    <div class="newsletter-content">
+      <div class="image-container">
+        <img src="Footer 1.png" alt="Left Model">
+      </div>
+      <div class="form-container">
+        <h2>Subscribe To Our Newsletter</h2>
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Scelerisque duis ultrices sollicitudin aliquam sem.</p>
+        <form class="subscribe-form">
+          <input type="email" placeholder="Mirna@gmail.com" required>
+          <button type="submit">Subscribe Now</button>
+        </form>
+      </div>
+      <div class="image-container">
+        <img src="Footer 2.png" alt="Right Model">
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Footer -->
+<footer class="footer">
+  <div class="container">
+    <div class="footer-content">
+      <div class="footer-logo">FASCO</div>
+      <ul class="footer-links">
+        <li><a href="#">Support Center</a></li>
+        <li><a href="#">Invoicing</a></li>
+        <li><a href="#">Contract</a></li>
+        <li><a href="#">Careers</a></li>
+        <li><a href="#">Blog</a></li>
+        <li><a href="#">FAQs</a></li>
+      </ul>
+    </div>
+    <p class="copyright">Copyright © 2025 Mirna Bahaa. All Rights Reserved.</p>
+  </div>
+</footer>
+
+
+
+
+
+
+
+
+
+    
+</body>
+</html>

@@ -1,0 +1,508 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>FASCO</title>
+  <style>
+    :root {
+      --main-color: #000;
+      --hover-color: #1a73e8;
+      --text-color: #333;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      line-height: 1.6;
+      background-color: #fff;
+    }
+
+    /* Navbar */
+    .navbar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 20px 100px;
+      background-color: #fff;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+      position: sticky;
+      top: 0;
+      z-index: 999;
+      flex-wrap: wrap;
+    }
+
+    .logo {
+      font-size: 24px;
+      font-weight: bold;
+      color: var(--text-color);
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 30px;
+      justify-content: center;
+      flex-grow: 1;
+      flex-wrap: wrap;
+    }
+
+    .nav-links a {
+      text-decoration: none;
+      color: var(--text-color);
+      font-size: 14px;
+      transition: color 0.3s, font-weight 0.3s;
+    }
+
+    .nav-links a:hover {
+      color: var(--hover-color);
+      font-weight: bold;
+      text-decoration: underline;
+    }
+
+    .signup-btn {
+      background-color: var(--main-color);
+      color: #fff;
+      padding: 10px 20px;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      font-size: 14px;
+      box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+      transition: background-color 0.3s, transform 0.2s;
+    }
+
+    .signup-btn:hover {
+      background-color: #222;
+      transform: scale(1.05);
+    }
+    </style>
+
+
+<style>
+    .cart-page {
+  padding: 70px 100px;
+  background: #fff;
+  font-family: 'Segoe UI', sans-serif;
+}
+
+.cart-title {
+  font-size: 28px;
+  margin-bottom: 10px;
+}
+
+.breadcrumb {
+  color: #666;
+  font-size: 14px;
+  margin-bottom: 30px;
+}
+
+.cart-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-bottom: 20px;
+}
+
+.cart-header {
+  display: grid;
+  grid-template-columns: 2fr 1fr 1fr 1fr;
+  font-weight: bold;
+  border-bottom: 1px solid #ddd;
+  padding-bottom: 10px;
+  margin-bottom: 20px;
+}
+
+.cart-item {
+  display: grid;
+  grid-template-columns: 2fr 1fr 1fr 1fr;
+  align-items: center;
+  padding: 20px 0;
+  border-bottom: 1px solid #eee;
+}
+
+.product-info {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+
+.product-info img {
+  width: 70px;
+  border-radius: 10px;
+}
+
+.product-name {
+  font-weight: 500;
+}
+
+.color {
+  font-size: 14px;
+  color: #555;
+}
+
+.remove-link {
+  color: #888;
+  font-size: 13px;
+  text-decoration: underline;
+  cursor: pointer;
+  text-align: center;
+}
+
+.quantity-selector {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.quantity-selector button {
+  width: 30px;
+  height: 30px;
+  border: 1px solid #ddd;
+  background: none;
+  cursor: pointer;
+}
+
+.quantity-selector input {
+  width: 40px;
+  text-align: center;
+  border: 1px solid #ddd;
+  height: 30px;
+}
+
+.extra-option {
+  margin: 20px 0;
+  font-size: 14px;
+}
+
+.cart-summary {
+  text-align: right;
+  margin-top: 20px;
+}
+
+.checkout-btn {
+  background-color: #000;
+  color: #fff;
+  padding: 12px 100px;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  margin-top: 10px;
+  display: block;
+  margin-left: auto;
+}
+
+.view-cart {
+  display: block;
+  margin-top: 10px;
+  color: #000;
+  text-decoration: underline;
+  font-size: 14px;
+}
+
+</style>
+
+
+<style>
+  /* Basic Reset */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Segoe UI', sans-serif;
+  background: #fff;
+  color: #333;
+}
+
+/* Newsletter Section */
+.newsletter {
+  padding: 60px 20px;
+  background: #ffffff;
+  text-align: center;
+}
+
+.container {
+  max-width: 1200px;
+  margin: auto;
+}
+
+.newsletter-content {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 30px;
+}
+
+.image-container img {
+  width: 100%;
+  max-width: 250px;
+  transition: transform 0.3s ease;
+}
+
+.image-container img:hover {
+  transform: scale(1.05);
+}
+
+.form-container {
+  flex: 1;
+  min-width: 300px;
+  max-width: 500px;
+  text-align: center;
+}
+
+.form-container h2 {
+  font-size: 28px;
+  margin-bottom: 15px;
+  color: #333;
+}
+
+.form-container p {
+  font-size: 14px;
+  color: #777;
+  margin-bottom: 25px;
+}
+
+.subscribe-form {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  align-items: center;
+}
+
+.subscribe-form input[type="email"] {
+  padding: 12px 20px;
+  width: 100%;
+  max-width: 350px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  transition: border-color 0.3s;
+}
+
+.subscribe-form input[type="email"]:focus {
+  border-color: #000;
+  outline: none;
+}
+
+.subscribe-form button {
+  padding: 12px 25px;
+  background: #000;
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background 0.3s, transform 0.3s;
+}
+
+.subscribe-form button:hover {
+  background: #333;
+  transform: translateY(-2px);
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .newsletter-content {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .image-container img {
+    max-width: 180px;
+  }
+
+  .form-container h2 {
+    font-size: 24px;
+  }
+}
+</style>
+
+<style>
+  /* Footer Styles */
+.footer {
+  background: #f6f6f6;
+  padding: 40px 20px 20px;
+  border-top: 1px solid #eee;
+  text-align: center;
+}
+
+.footer .container {
+  max-width: 1200px;
+  margin: auto;
+}
+
+.footer-content {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+  gap: 20px;
+}
+
+.footer-logo {
+  font-size: 20px;
+  font-weight: bold;
+  color: #222;
+}
+
+.footer-links {
+  list-style: none;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  justify-content: center;
+  margin: 0;
+  padding: 0;
+}
+
+.footer-links li a {
+  text-decoration: none;
+  color: #444;
+  font-size: 14px;
+  transition: color 0.3s ease;
+}
+
+.footer-links li a:hover {
+  color: #000;
+}
+
+.footer p {
+  font-size: 13px;
+  color: #777;
+}
+
+/* Responsive Footer */
+@media (max-width: 768px) {
+  .footer-content {
+    flex-direction: column;
+    text-align: center;
+  }
+}
+
+</style>
+
+
+
+
+
+
+
+
+
+</head>
+<body>
+    
+    <!-- Navbar -->
+  <nav class="navbar">
+    <div class="logo">FASCO</div>
+    <div class="nav-links">
+      <a href="Home.html">Home</a>
+      <a href="shop.html">Shop</a>
+      <a href="#">New Arrivals</a>
+      <a href="#">Packages</a>
+      <a href="#">Sign in</a>
+    </div>
+    <button class="signup-btn">Sign Up</button>
+  </nav>
+
+
+<section class="cart-page">
+  <h2 class="cart-title">Shopping Cart</h2>
+  <p class="breadcrumb">Home &gt; Your Shopping Cart</p>
+
+  <div class="cart-table">
+    <div class="cart-header">
+      <span>Product</span>
+      <span>Price</span>
+      <span>Quantity</span>
+      <span>Total</span>
+    </div>
+
+    <div class="cart-item">
+      <div class="product-info">
+        <img src="New folder/49_ecfb9d65-a392-40b1-b9fb-f62e5a84f812.jpg.png" alt="Product" />
+        <div>
+          <p class="product-name">Mini Dress With Ruffled Straps</p>
+          <p class="color">Color: Red</p>
+          <a href="#" class="remove-link">Remove</a>
+        </div>
+      </div>
+      <span class="price">$14.90</span>
+      <div class="quantity-selector">
+        <button>-</button>
+        <input type="text" value="1" />
+        <button>+</button>
+      </div>
+      <span class="total">$14.90</span>
+    </div>
+  </div>
+
+  <div class="extra-option">
+    <input type="checkbox" id="wrap" />
+    <label for="wrap">For $10.00 Please Wrap The Product</label>
+  </div>
+
+  <div class="cart-summary">
+    <p>Subtotal: <strong>$100.00</strong></p>
+   <a href="check order.html"> <button class="checkout-btn">Checkout</button> </a>
+    <a href="#" class="view-cart">View Cart</a>
+  </div>
+</section>
+
+<!-- Newsletter Section -->
+<section class="newsletter">
+  <div class="container">
+    <div class="newsletter-content">
+      <div class="image-container">
+        <img src="Footer 1.png" alt="Left Model">
+      </div>
+      <div class="form-container">
+        <h2>Subscribe To Our Newsletter</h2>
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Scelerisque duis ultrices sollicitudin aliquam sem.</p>
+        <form class="subscribe-form">
+          <input type="email" placeholder="Mirna@gmail.com" required>
+          <button type="submit">Subscribe Now</button>
+        </form>
+      </div>
+      <div class="image-container">
+        <img src="Footer 2.png" alt="Right Model">
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Footer -->
+<footer class="footer">
+  <div class="container">
+    <div class="footer-content">
+      <div class="footer-logo">FASCO</div>
+      <ul class="footer-links">
+        <li><a href="#">Support Center</a></li>
+        <li><a href="#">Invoicing</a></li>
+        <li><a href="#">Contract</a></li>
+        <li><a href="#">Careers</a></li>
+        <li><a href="#">Blog</a></li>
+        <li><a href="#">FAQs</a></li>
+      </ul>
+    </div>
+    <p class="copyright">Copyright © 2025 Mirna Bahaa. All Rights Reserved.</p>
+  </div>
+</footer>
+
+
+
+
+
+
+
+
+
+
+</body>
+</html>
